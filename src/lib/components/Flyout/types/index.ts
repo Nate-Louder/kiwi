@@ -1,2 +1,2 @@
-export * from './flyout-side.enum';
-export * from './flyout-store';
+export * from './flyout-side.enum.ts';
+export * from './flyout-store.ts';

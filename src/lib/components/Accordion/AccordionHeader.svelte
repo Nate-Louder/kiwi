@@ -1,7 +1,7 @@
 <script lang="ts">
-    import type { CustomAccordionStore } from './types';
-    import { getParentStore } from '../../utilities';
-    import { Text } from '../Text';
+    import type { CustomAccordionStore } from './types/index.ts';
+    import { getParentStore } from '../../utilities/index.ts';
+    import Text from '../Text/Text.svelte';
 
     // -----------------------
     // Internal Properties
@@ -25,9 +25,7 @@
 <!-- svelte-ignore a11y-click-events-have-key-events -->
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="accordion-header" class:accordion-header--open={open} on:click={handleClick}>
-    <Text>
-        <slot></slot>
-    </Text>
+    <slot></slot>
     <div class="accordion-header__chevron">
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -50,26 +48,22 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: var(--size-sm);
+        padding: var(--header-padding);
         cursor: pointer;
         transition: background-color 0.3s ease;
         width: auto;
         box-sizing: border-box;
+        background-color: var(--header-background-color);
 
         &:hover {
-            background-color: var(--color-interactable-secondary-hover);
-        }
-
-        &__title {
-            font-size: 16px;
-            font-weight: 600;
+            background-color: var(--header-hover-background-color);
         }
 
         &__chevron {
             height: 24px;
             width: 24px;
             transition: transform 0.3s ease;
-            color: #787878;
+            color: var(--header-chevron-color);
         }
     }
 </style>

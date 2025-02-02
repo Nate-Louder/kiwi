@@ -1,6 +1,6 @@
-import type { EnumOf } from "../../../utilities";
+import type { EnumOf } from "../../../index.ts";
 
-export const InputSeriesTypeEnum ={
+export const InputSeriesTypeEnum = {
     character: "character",
     digit: "digit",
     alphanumeric: "alphanumeric",

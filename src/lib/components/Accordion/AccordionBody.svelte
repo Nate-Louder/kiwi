@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext } from 'svelte';
-    import type { CustomAccordionStore } from './types';
-    import { getParentStore } from '../../utilities';
+    import type { CustomAccordionStore } from './types/index.ts';
+    import { getParentStore } from '../../utilities/index.ts';
 
     // -----------------------
     // Internal Properties
@@ -40,8 +40,10 @@
         transition:
             max-height 0.3s ease-in-out,
             padding 0.3s ease-in-out;
-        padding: 0 var(--size-sm);
+        padding: 0 var(--body-padding);
         width: auto;
+        color: var(--body-color);
+        background-color: var(--body-background-color);
 
         &--open {
             max-height: var(--max-height);

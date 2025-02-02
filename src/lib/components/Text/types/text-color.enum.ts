@@ -1,6 +1,6 @@
-import type { EnumOf } from "../../../utilities";
+import type { EnumOf } from "../../../utilities/index.ts";
 
-export const TextColorEnum ={
+export const TextColorEnum = {
     primary: "primary",
     secondary: "secondary",
     light: "light",

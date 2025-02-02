@@ -1,7 +1,7 @@
 <script lang="ts">
     import PopoverContent from '../PopoverContent.svelte';
-    import type { CustomPopoverStore, PopoverItem } from '../types';
-    import { getParentStore } from '../../../utilities';
+    import type { CustomPopoverStore, PopoverItem } from '../types/index.ts';
+    import { getParentStore } from '../../../utilities/index.ts';
     import { Text, TextColorEnum, type TextColor } from '../../../components';
 
     // -----------------------

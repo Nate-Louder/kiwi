@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { CustomTabsStore } from './types';
+import type { CustomTabsStore } from './types/index.ts';
 
 export const createTabsStore = (
     activeTabIndex: number

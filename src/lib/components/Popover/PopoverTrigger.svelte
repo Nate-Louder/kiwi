@@ -1,7 +1,6 @@
 <script lang="ts">
-    import { getContext } from 'svelte';
-    import type { CustomPopoverStore } from './types';
-    import { getParentStore } from '../../utilities';
+    import type { CustomPopoverStore } from './types/index.ts';
+    import { getParentStore } from '../../utilities/index.ts';
 
     export let fullheight: boolean = false;
     export let fullwidth: boolean = false;

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { TagColorEnum, TagSizeEnum, type TagColor, type TagSize } from './types';
+    import { TagColorEnum, TagSizeEnum, type TagColor, type TagSize } from './types/index.ts';
     // -----------------------
     // External Properties
     // -----------------------

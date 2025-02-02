@@ -1,4 +1,4 @@
-import type { EnumOf } from "../../../utilities";
+import type { EnumOf } from "../../../utilities/index.ts";
 
 export const TextSizeEnum = {
     small: "small",

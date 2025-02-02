@@ -1,5 +1,5 @@
 import { createPopper, type Instance } from '@popperjs/core';
-import type { PopoverPosition } from '../types';
+import type { PopoverPosition } from '../types/index.ts';
 
 export class PopoverUtilities {
 
@@ -7,7 +7,7 @@ export class PopoverUtilities {
         return popoverElement.querySelector('#trigger') as HTMLElement;
     }
 
-    static getContentElement(popoverElement: HTMLElement): HTMLElement{
+    static getContentElement(popoverElement: HTMLElement): HTMLElement {
         return popoverElement.querySelector('#content') as HTMLElement;
     }
 

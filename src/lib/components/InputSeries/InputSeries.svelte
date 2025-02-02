@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { InputSeriesTypeEnum, type InputSeriesType } from './types';
-    import { Text } from '../../components';
+    import { InputSeriesTypeEnum, type InputSeriesType } from './types/index.ts';
+    import Text from '../Text/Text.svelte';
     // -----------------------
     // External Properties
     // -----------------------
@@ -9,6 +9,7 @@
     export let maxlength: number = 1;
     export let type: InputSeriesType = InputSeriesTypeEnum.alphanumeric;
     export let label: string;
+    export let value: string[] = Array(inputamount).fill('');
 
     // -----------------------
     // Internal Properties
@@ -77,6 +78,7 @@
                     on:keydown={(event) => handleKeyNavigation(event, index)}
                     on:input={(event) => handleInput(event, index)}
                     on:change={() => dispatch('change', { value: inputElements.map((input) => input.value) })}
+                    bind:value={value[index]}
                 />
             </div>
         {/each}

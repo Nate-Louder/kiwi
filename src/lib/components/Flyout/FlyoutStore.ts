@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { CustomFlyoutStore } from './types';
+import type { CustomFlyoutStore } from './types/index.ts';
 
 export const createFlyoutStore = (
     open: boolean = false,

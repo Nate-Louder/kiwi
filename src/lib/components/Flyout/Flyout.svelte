@@ -1,9 +1,11 @@
 <script lang="ts">
-    import { createFlyoutStore } from './FlyoutStore';
     import Button from '../Button/Button.svelte';
-    import { ButtonTypeEnum } from '../Button/types';
-    import { type CustomFlyoutStore, type FlyoutSide, FlyoutSideEnum } from './types';
-    import { Header, HeaderTypeEnum } from '../Header';
+    import Header from '../Header/Header.svelte';
+    import { HeaderTypeEnum } from '../Header/types/index.ts';
+    import { ButtonTypeEnum } from '../Button/types/index.ts';
+    import { createFlyoutStore } from './FlyoutStore.ts';
+
+    import { type CustomFlyoutStore, type FlyoutSide, FlyoutSideEnum } from './types/index.ts';
 
     // -----------------------
     // External Properties
@@ -46,7 +48,7 @@
                 <div class="flyout__header__top">
                     <Header type={HeaderTypeEnum.h1}>{header}</Header>
                     <div class="flyout__close-button">
-                        <Button type={ButtonTypeEnum.secondary} on:click={() => private_store.close()}
+                        <Button type={ButtonTypeEnum.secondary} style={{}} on:click={() => private_store.close()}
                             ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 ><path
                                     fill="currentColor"

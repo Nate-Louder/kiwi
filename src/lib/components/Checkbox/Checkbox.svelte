@@ -1,12 +1,24 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { TextColorEnum, Text, TextSizeEnum } from '../../components';
+    import { TextColorEnum, Text, TextSizeEnum } from '../../components/index.ts';
+    import type { CheckboxCustomStyling } from './types/checkbox-custom-styling.interface.ts';
+
+    // -----------------------
+    // External Properties
+    // -----------------------
     export let label;
     export let checked = false;
+    export let style: CheckboxCustomStyling | undefined = undefined;
 
+    // -----------------------
+    // Internal Properties
+    // -----------------------
     let checkbox: HTMLElement;
-
     const dispatch = createEventDispatcher();
+
+    // -----------------------
+    // Internal Methods
+    // -----------------------
     function handleClick(event: MouseEvent) {
         event.stopPropagation();
         checked = !checked;
@@ -14,13 +26,70 @@
         checkbox.focus();
     }
 
+    const defaultStyles: CheckboxCustomStyling = {
+        backgroundColor: '#FFFFFF',
+        border: '2px solid #000000',
+        borderRadius: '0px',
+        hover: {
+            border: '2px solid #555555',
+        },
+
+        checked: {
+            backgroundColor: '#000000',
+            border: '2px solid #000000',
+            hover: {
+                backgroundColor: '#555555',
+                border: '2px solid #555555',
+            },
+        },
+        focus: {
+            border: 'solid 2px #000000',
+        },
+    };
+
+    const buildStyles = () => {
+        const baseStyles = defaultStyles;
+        const mergedStyles = {
+            ...baseStyles,
+            ...style,
+            hover: {
+                ...baseStyles.hover,
+                ...style?.hover,
+            },
+            checked: {
+                ...baseStyles.checked,
+                ...style?.checked,
+                hover: {
+                    ...baseStyles.checked?.hover,
+                    ...style?.checked?.hover,
+                },
+            },
+            focus: {
+                ...baseStyles.focus,
+                ...style?.focus,
+            },
+        };
+
+        return `
+            --background-color: ${mergedStyles.backgroundColor};
+            --border: ${mergedStyles.border};
+            --border-radius: ${mergedStyles.borderRadius};
+            --hover-border: ${mergedStyles.hover?.border ?? 'inherit'};
+            --checked-background: ${mergedStyles.checked?.backgroundColor ?? 'inherit'};
+            --checked-border: ${mergedStyles.checked?.border ?? 'inherit'};
+            --checked-hover-background: ${mergedStyles.checked?.hover?.backgroundColor ?? 'inherit'};
+            --checked-hover-border: ${mergedStyles.checked?.hover?.border ?? 'inherit'};
+            --focus-border: ${mergedStyles.focus?.border ?? 'inherit'};
+        `;
+    };
+
     $: checked;
 </script>
 
 <div class="checkbox">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
     <!-- svelte-ignore a11y-no-static-element-interactions -->
-    <div class="checkbox__inner" class:checkbox__inner--checked={checked} bind:this={checkbox} on:click={handleClick}>
+    <div class="checkbox__inner" class:checkbox__inner--checked={checked} bind:this={checkbox} on:click={handleClick} style={buildStyles()}>
         {#if checked}
             <svg width="8" height="7" viewBox="0 0 8 7" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
@@ -38,7 +107,6 @@
 </div>
 
 <style lang="scss">
-    @import '../../../variables.css';
     .checkbox {
         display: flex;
         align-items: center;
@@ -53,31 +121,32 @@
             align-items: center;
             justify-content: center;
             position: relative;
-            border: 2px solid var(--color-edge);
-            border-radius: 4px;
+            background-color: var(--background-color);
+            border: var(--border);
+            border-radius: var(--border-radius);
             cursor: pointer;
             transition: all 0.3s ease;
 
             &:hover {
-                border: 2px solid var(--color-interactable-outline-hover);
+                border: var(--hover-border);
             }
 
             &--checked {
-                background-color: var(--color-interactable-primary);
-                border: 2px solid var(--color-interactable-outline-hover);
+                background-color: var(--checked-background);
+                border: var(--checked-border);
 
                 &:hover {
-                    background-color: var(--color-interactable-primary-hover);
-                    border: 2px solid var(--color-interactable-primary-hover);
+                    background-color: var(--checked-hover-background);
+                    border: var(--checked-hover-border);
                 }
             }
 
             &:focus {
-                border: solid 2px var(--color-priamry);
+                border: var(--focus-border);
             }
 
             &:focus-visible {
-                border: solid 2px var(--color-priamry);
+                border: var(--focus-border);
             }
         }
 

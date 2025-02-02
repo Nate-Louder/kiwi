@@ -1,7 +1,8 @@
 <script lang="ts">
-    import type { CustomTabsStore } from './types';
-    import { getParentStore } from '../../utilities/store-utilities';
-    import { TextColorEnum, Text } from '../Text';
+    import type { CustomTabsStore } from './types/index.ts';
+    import { getParentStore } from '../../index.ts';
+    import { TextColorEnum } from '../Text/types/index.ts';
+    import Text from '../Text/Text.svelte';
 
     // -----------------------
     // External Properties

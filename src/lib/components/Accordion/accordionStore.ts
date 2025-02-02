@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { AccordionStoreProps, CustomAccordionStore } from './types';
+import type { AccordionStoreProps, CustomAccordionStore } from './types/index.ts';
 
 export const createAccordionStore = (
     open: boolean = false,

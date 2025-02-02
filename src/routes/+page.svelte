@@ -68,13 +68,59 @@
             <AccordionHeader slot="header"><Text>This is an Accordion</Text></AccordionHeader>
             <AccordionBody slot="body"><Text>This is the body of the Accordion</Text></AccordionBody>
         </Accordion>
+        <Accordion
+            style={{
+                backgroundColor: '#000000',
+                color: '#FFFFFF',
+                border: '1px solid #ffffff',
+                borderRadius: '0px',
+                hover: {
+                    backgroundColor: '#ffffff',
+                    color: '#000000',
+                    border: '1px solid #ffffff',
+                },
+            }}
+        >
+            <AccordionHeader slot="header"><Text>This is an Accordion</Text></AccordionHeader>
+            <AccordionBody slot="body"><Text>This is the body of the Accordion</Text></AccordionBody>
+        </Accordion>
     </div>
     <div class="buttons">
         <Button type={ButtonTypeEnum.secondary} size={ButtonSizeEnum.medium} on:click={() => flyoutElement.toggle()}>I'm a Button</Button>
         <Button type={ButtonTypeEnum.primary} size={ButtonSizeEnum.medium}>I'm a Button</Button>
         <Button type={ButtonTypeEnum.tertiary} size={ButtonSizeEnum.medium}>I'm a Button</Button>
+        <Button
+            type={ButtonTypeEnum.primary}
+            style={{
+                backgroundColor: '#dc2626',
+                border: '1px solid #dc2626',
+                hover: {
+                    backgroundColor: '#b91c1c',
+                },
+            }}
+        >
+            Delete
+        </Button>
     </div>
     <Checkbox label="Checkbox" on:change={handleChange} />
+    <Checkbox
+        label="Checkbox"
+        style={{
+            border: '2px solid #000000',
+            borderRadius: '0px',
+            hover: {
+                border: '2px solid #b91c1c',
+            },
+            checked: {
+                backgroundColor: '#b91c1c',
+                border: '2px solid #b91c1c',
+                hover: {
+                    backgroundColor: '#c92c2c',
+                    border: '2px solid #c92c2c',
+                },
+            },
+        }}
+    />
     <Flyout bind:this={flyoutElement}>
         <div slot="flyout-body" class="flyout-body">
             <Tabs activeTab={1}>

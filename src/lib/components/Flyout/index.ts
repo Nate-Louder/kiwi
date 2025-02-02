@@ -1,3 +1,3 @@
 export { default as Flyout } from './Flyout.svelte';
 
-export * from './types';
+export * from './types/index.ts';

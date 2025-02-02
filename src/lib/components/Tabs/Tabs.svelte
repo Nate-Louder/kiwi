@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { createTabsStore } from './TabsStore.js';
-    import { setParentStoreContext } from '../../utilities/store-utilities.js';
+    import { createTabsStore } from './TabsStore.ts';
+    import { setParentStoreContext } from '../../index.ts';
 
     // -----------------------
     // External Properties

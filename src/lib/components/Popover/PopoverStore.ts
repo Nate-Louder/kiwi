@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import { type PopoverStoreProps, type CustomPopoverStore, type PopoverItem } from './types';
+import { type PopoverStoreProps, type CustomPopoverStore, type PopoverItem } from './types/index.ts';
 
 export const createPopoverStore = (
     items: PopoverItem[] = [],
