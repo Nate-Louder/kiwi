@@ -1,6 +1,6 @@
 <script>
     import { createEventDispatcher, getContext } from 'svelte';
-    import { createToastStore } from './ToastStore.ts';
+    import { createToastStore } from './ToastStore';
     import { fly, fade, slide } from 'svelte/transition';
     import Button from '../Button/Button.svelte';
 

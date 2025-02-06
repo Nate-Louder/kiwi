@@ -1,11 +1,11 @@
 <script lang="ts">
     import Button from '../Button/Button.svelte';
     import Header from '../Header/Header.svelte';
-    import { HeaderTypeEnum } from '../Header/types/index.ts';
-    import { ButtonTypeEnum } from '../Button/types/index.ts';
-    import { createFlyoutStore } from './FlyoutStore.ts';
+    import { HeaderTypeEnum } from '../Header/types/index';
+    import { ButtonTypeEnum } from '../Button/types/index';
+    import { createFlyoutStore } from './FlyoutStore';
 
-    import { type CustomFlyoutStore, type FlyoutSide, FlyoutSideEnum } from './types/index.ts';
+    import { type CustomFlyoutStore, type FlyoutSide, FlyoutSideEnum } from './types/index';
 
     // -----------------------
     // External Properties

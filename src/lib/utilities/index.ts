@@ -1,2 +1,2 @@
-export * from './enum-of.ts';
-export * from './store-utilities.ts';
+export * from './enum-of';
+export * from './store-utilities';

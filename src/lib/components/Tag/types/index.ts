@@ -1,2 +1,2 @@
-export * from './tag-color.enum.ts';
-export * from './tag-size.enum.ts';
+export * from './tag-color.enum';
+export * from './tag-size.enum';

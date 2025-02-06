@@ -1,4 +1,4 @@
-import type { EnumOf } from '../../../utilities/index.ts'
+import type { EnumOf } from '../../../utilities/index'
 
 export const HeaderTypeEnum = {
     h1: 'h1',

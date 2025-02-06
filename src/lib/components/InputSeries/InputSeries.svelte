@@ -1,6 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { InputSeriesTypeEnum, type InputSeriesType } from './types/index.ts';
+    import { InputSeriesTypeEnum, type InputSeriesType } from './types/index';
+    import type { InputSeriesCustomStyling } from './types/input-series-custom-styling.interface';
     import Text from '../Text/Text.svelte';
     // -----------------------
     // External Properties
@@ -10,12 +11,93 @@
     export let type: InputSeriesType = InputSeriesTypeEnum.alphanumeric;
     export let label: string;
     export let value: string[] = Array(inputamount).fill('');
+    export let style: InputSeriesCustomStyling | undefined = undefined;
 
     // -----------------------
     // Internal Properties
     // -----------------------
     let inputElements: HTMLInputElement[] = [];
     const dispatch = createEventDispatcher();
+
+    const defaultStyles: InputSeriesCustomStyling = {
+        backgroundColor: '#FFFFFF',
+        color: '#000000',
+        border: '1px solid #000000',
+        borderRadius: '0',
+        padding: '8px',
+        fontSize: '16px',
+        width: '35px',
+        height: '35px',
+        hover: {
+            border: '2px solid #000000',
+        },
+        focus: {
+            border: '2px solid #000000',
+        },
+        label: {
+            color: '#000000',
+            fontSize: '14px',
+        },
+        container: {
+            gap: '8px',
+        },
+    };
+
+    const buildStyles = () => {
+        const mergedStyles = {
+            ...defaultStyles,
+            ...style,
+            hover: {
+                ...defaultStyles.hover,
+                ...style?.hover,
+            },
+            focus: {
+                ...defaultStyles.focus,
+                ...style?.focus,
+            },
+            disabled: {
+                ...defaultStyles.disabled,
+                ...style?.disabled,
+            },
+            label: {
+                ...defaultStyles.label,
+                ...style?.label,
+            },
+            container: {
+                ...defaultStyles.container,
+                ...style?.container,
+            },
+        };
+
+        return `
+            --background-color: ${mergedStyles.backgroundColor};
+            --color: ${mergedStyles.color};
+            --border: ${mergedStyles.border};
+            --border-radius: ${mergedStyles.borderRadius};
+            --padding: ${mergedStyles.padding};
+            --font-size: ${mergedStyles.fontSize};
+            --width: ${mergedStyles.width};
+            --height: ${mergedStyles.height};
+
+            --hover-border: ${mergedStyles.hover?.border ?? 'inherit'};
+            --hover-background: ${mergedStyles.hover?.backgroundColor ?? 'inherit'};
+            --hover-color: ${mergedStyles.hover?.color ?? 'inherit'};
+
+            --focus-border: ${mergedStyles.focus?.border ?? 'inherit'};
+            --focus-background: ${mergedStyles.focus?.backgroundColor ?? 'inherit'};
+            --focus-color: ${mergedStyles.focus?.color ?? 'inherit'};
+
+            --disabled-background: ${mergedStyles.disabled?.backgroundColor ?? 'inherit'};
+            --disabled-color: ${mergedStyles.disabled?.color ?? 'inherit'};
+            --disabled-border: ${mergedStyles.disabled?.border ?? 'inherit'};
+            --disabled-cursor: ${mergedStyles.disabled?.cursor ?? 'not-allowed'};
+
+            --label-color: ${mergedStyles.label?.color};
+            --label-font-size: ${mergedStyles.label?.fontSize};
+
+            --container-gap: ${mergedStyles.container?.gap};
+        `;
+    };
 
     // -----------------------
     // Internal Methods
@@ -64,9 +146,9 @@
     }
 </script>
 
-<div class="input-series">
+<div class="input-series" style={buildStyles()}>
     <div class="input-series__header">
-        <Text>{label}</Text>
+        <div class="input-series__label">{label}</div>
     </div>
     <div class="input-series__container">
         {#each Array(inputamount) as _, index}
@@ -86,45 +168,58 @@
 </div>
 
 <style lang="scss">
-    @import '../../../variables.css';
-
     .input-series {
         display: flex;
         flex-direction: column;
-        gap: var(--size-xs);
+        gap: var(--container-gap);
         align-items: flex-start;
 
         &__container {
             display: flex;
-            gap: var(--size-xs);
+            gap: var(--container-gap);
         }
 
         &__entryarea {
-            height: 35px;
-            line-height: 35px;
+            height: var(--height);
+            line-height: var(--height);
         }
 
         &__input {
-            width: 35px;
+            width: var(--width);
+            height: var(--height);
             box-sizing: border-box;
-            font-size: 16px;
-            color: var(--color-text-primary);
-            height: 35px;
-            border-radius: var(--size-xs);
-            outline: 1px solid var(--color-edge-dark);
-            background: transparent;
-            transition: 0.1s ease-in-out;
-            z-index: 1111;
-            border: none;
+            font-size: var(--font-size);
+            color: var(--color);
+            border: var(--border);
+            border-radius: var(--border-radius);
+            padding: var(--padding);
+            background-color: var(--background-color);
+            outline: none;
             text-align: center;
 
             &:hover {
-                outline: 2px solid var(--color-edge-dark);
+                border: var(--hover-border);
+                background-color: var(--hover-background);
+                color: var(--hover-color);
             }
 
             &:focus {
-                outline: 2px solid var(--color-primary);
+                border: var(--focus-border);
+                background-color: var(--focus-background);
+                color: var(--focus-color);
             }
+
+            &:disabled {
+                background-color: var(--disabled-background);
+                color: var(--disabled-color);
+                border: var(--disabled-border);
+                cursor: var(--disabled-cursor);
+            }
+        }
+
+        &__label {
+            color: var(--label-color);
+            font-size: var(--label-font-size);
         }
     }
 </style>

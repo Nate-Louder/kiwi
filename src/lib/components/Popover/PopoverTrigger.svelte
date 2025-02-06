@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { CustomPopoverStore } from './types/index.ts';
-    import { getParentStore } from '../../utilities/index.ts';
+    import type { CustomPopoverStore } from './types/index';
+    import { getParentStore } from '../../utilities/index';
 
     export let fullheight: boolean = false;
     export let fullwidth: boolean = false;

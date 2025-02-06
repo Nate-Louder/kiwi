@@ -1,8 +1,8 @@
 <script lang="ts">
     import { setContext } from 'svelte';
-    import { createAccordionStore } from './accordionStore.ts';
-    import { setParentStoreContext } from '../../utilities/index.ts';
-    import type { CustomAccordionStore } from './types/index.ts';
+    import { createAccordionStore } from './accordionStore';
+    import { setParentStoreContext } from '../../utilities/index';
+    import type { CustomAccordionStore } from './types/index';
     import type { AccordionCustomStyling } from './types';
     import { createEventDispatcher } from 'svelte';
 

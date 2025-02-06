@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { getParentStore } from '../../utilities/index.ts';
-    import type { CustomTabsStore } from './types/index.ts';
+    import { getParentStore } from '../../utilities/index';
+    import type { CustomTabsStore } from './types/index';
 
     // -----------------------
     // External Properties

@@ -1,4 +1,4 @@
-import type { EnumOf } from '../../../utilities/index.ts'
+import type { EnumOf } from '../../../utilities/index'
 
 export const ButtonTypeEnum = {
     primary: 'primary',

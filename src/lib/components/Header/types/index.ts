@@ -1,2 +1,2 @@
-export * from './header-color.enum.ts';
-export * from './header-type.enum.ts';
+export * from './header-color.enum';
+export * from './header-type.enum';

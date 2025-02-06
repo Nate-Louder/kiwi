@@ -1,3 +1,3 @@
 export { default as Tag } from './Tag.svelte';
 
-export * from './types/index.ts';
+export * from './types/index';

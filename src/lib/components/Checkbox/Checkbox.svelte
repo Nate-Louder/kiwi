@@ -1,7 +1,7 @@
 <script lang="ts">
     import { createEventDispatcher } from 'svelte';
-    import { TextColorEnum, Text, TextSizeEnum } from '../../components/index.ts';
-    import type { CheckboxCustomStyling } from './types/checkbox-custom-styling.interface.ts';
+    import { TextColorEnum, Text, TextSizeEnum } from '../../components/index';
+    import type { CheckboxCustomStyling } from './types/checkbox-custom-styling.interface';
 
     // -----------------------
     // External Properties

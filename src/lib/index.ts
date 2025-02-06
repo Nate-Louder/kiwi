@@ -1,3 +1,3 @@
 // Reexport your entry components here
-export * from './components/index.ts';
-export * from './utilities/index.ts';
+export * from './components/index';
+export * from './utilities/index';

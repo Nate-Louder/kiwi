@@ -1,7 +1,7 @@
 <script lang="ts">
     import { getContext } from 'svelte';
-    import type { CustomAccordionStore } from './types/index.ts';
-    import { getParentStore } from '../../utilities/index.ts';
+    import type { CustomAccordionStore } from './types/index';
+    import { getParentStore } from '../../utilities/index';
 
     // -----------------------
     // Internal Properties

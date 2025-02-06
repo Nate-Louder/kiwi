@@ -1,4 +1,4 @@
-// See https://svelte.dev/docs/kit/types/index.ts#app.d.ts
+// See https://svelte.dev/docs/kit/types/index#app.d.ts
 // for information about these interfaces
 declare global {
 	namespace App {

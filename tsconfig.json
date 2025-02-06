@@ -1,16 +1,30 @@
 {
-	"extends": "./.svelte-kit/tsconfig.json",
 	"compilerOptions": {
-		"allowJs": true,
-		"checkJs": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"sourceMap": true,
-		"strict": true,
+		// Output directory for compiled files
+		"outDir": "./dist",
+		// Root directory of your source files
+		"rootDir": "./src",
+		// Target ECMAScript version (ES6+ for modern environments)
+		"target": "ESNext",
+		// Module system (ES modules for modern environments)
 		"module": "NodeNext",
+		// Module resolution strategy
 		"moduleResolution": "NodeNext",
-		"allowImportingTsExtensions": true
+		// Allow default imports from modules with no default export
+		"esModuleInterop": true,
+		// Generate `.d.ts` declaration files for TypeScript support
+		"declaration": true,
+		// Output directory for declaration files
+		"declarationDir": "./dist/types",
+		// Preserve JSX syntax (not needed for Svelte, but useful if you have JSX)
+		"jsx": "preserve",
+		// Enable strict type-checking options
+		"strict": true,
+		// Allow importing `.svelte` files as modules
+		"allowSyntheticDefaultImports": true,
+		// Resolve JSON modules
+		"resolveJsonModule": true,
+		// Include source maps for debugging
+		"sourceMap": true
 	}
 }

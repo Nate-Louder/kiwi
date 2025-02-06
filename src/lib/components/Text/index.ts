@@ -1,3 +1,3 @@
 export { default as Text } from './Text.svelte';
 
-export * from './types/index.ts';
+export * from './types/index';

@@ -2,9 +2,9 @@
     import { getContext } from 'svelte';
     import PopoverTrigger from '../PopoverTrigger.svelte';
     import Text from '../../Text/Text.svelte';
-    import type { CustomPopoverStore, PopoverItem } from '../types/index.ts';
-    import { getParentStore } from '../../../utilities/index.ts';
-    import { TextColorEnum, TextSizeEnum } from '../../Text/types/index.ts';
+    import type { CustomPopoverStore, PopoverItem } from '../types/index';
+    import { getParentStore } from '../../../utilities/index';
+    import { TextColorEnum, TextSizeEnum } from '../../Text/types/index';
 
     // -----------------------
     // External Properties

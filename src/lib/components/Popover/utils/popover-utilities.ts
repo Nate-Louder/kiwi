@@ -1,5 +1,5 @@
 import { createPopper, type Instance } from '@popperjs/core';
-import type { PopoverPosition } from '../types/index.ts';
+import type { PopoverPosition } from '../types/index';
 
 export class PopoverUtilities {
 

@@ -7,7 +7,7 @@
         type ButtonSize,
         type ButtonCustomStyling,
         type ButtonThemeStyles,
-    } from './types/index.ts';
+    } from './types/index';
 
     // -----------------------
     // External Properties
@@ -131,9 +131,6 @@
     const buildStyles = () => {
         const baseStyles = defaultStyles[type];
         const sizeStyle = sizeStyles[size];
-        console.log(
-            style?.focus?.backgroundColor ?? style?.hover?.backgroundColor ?? style?.backgroundColor ?? baseStyles.active?.backgroundColor,
-        );
 
         const mergedStyles = {
             borderRadius: '0px',

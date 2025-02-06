@@ -68,22 +68,6 @@
             <AccordionHeader slot="header"><Text>This is an Accordion</Text></AccordionHeader>
             <AccordionBody slot="body"><Text>This is the body of the Accordion</Text></AccordionBody>
         </Accordion>
-        <Accordion
-            style={{
-                backgroundColor: '#000000',
-                color: '#FFFFFF',
-                border: '1px solid #ffffff',
-                borderRadius: '0px',
-                hover: {
-                    backgroundColor: '#ffffff',
-                    color: '#000000',
-                    border: '1px solid #ffffff',
-                },
-            }}
-        >
-            <AccordionHeader slot="header"><Text>This is an Accordion</Text></AccordionHeader>
-            <AccordionBody slot="body"><Text>This is the body of the Accordion</Text></AccordionBody>
-        </Accordion>
     </div>
     <div class="buttons">
         <Button type={ButtonTypeEnum.secondary} size={ButtonSizeEnum.medium} on:click={() => flyoutElement.toggle()}>I'm a Button</Button>
@@ -186,6 +170,30 @@
             <TabContent tabnum={2}><Text>Tab Content 2</Text></TabContent>
         </svelte:fragment>
     </Tabs>
+    <Tabs
+        activeTab={1}
+        style={{
+            backgroundColor: '#000000',
+            color: '#FFFFFF',
+            active: {
+                backgroundColor: '#000000',
+                color: '#FFFFFF',
+            },
+            hover: {
+                backgroundColor: '#212121',
+                color: '#FFFFFF',
+            },
+        }}
+    >
+        <svelte:fragment slot="labels">
+            <TabLabel tabnum={1}>Tab 1</TabLabel>
+            <TabLabel tabnum={2}>Tab 2</TabLabel>
+        </svelte:fragment>
+        <svelte:fragment slot="contents">
+            <TabContent tabnum={1}><Text>Tab Content 1</Text></TabContent>
+            <TabContent tabnum={2}><Text>Tab Content 2</Text></TabContent>
+        </svelte:fragment>
+    </Tabs>
     <div class="tags">
         <Tag color={TagColorEnum.green}>Tag</Tag>
         <Tag color={TagColorEnum.red}>Tag</Tag>
@@ -196,7 +204,7 @@
         <Tag color={TagColorEnum.yellow}>Tag</Tag>
     </div>
     <Text>This is the text component</Text>
-    <TextInput label="This is an Input" on:change={handleChange} />
+    <TextInput label="Custom Input" />
     <InputSeries label="This is an Input Series" on:change={handleChange} />
 </div>
 

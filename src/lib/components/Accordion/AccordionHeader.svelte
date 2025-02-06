@@ -1,6 +1,6 @@
 <script lang="ts">
-    import type { CustomAccordionStore } from './types/index.ts';
-    import { getParentStore } from '../../utilities/index.ts';
+    import type { CustomAccordionStore } from './types/index';
+    import { getParentStore } from '../../utilities/index';
     import Text from '../Text/Text.svelte';
 
     // -----------------------

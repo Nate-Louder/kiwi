@@ -1,5 +1,5 @@
 import { type Writable } from 'svelte/store';
-import { type PopoverItem } from './popover-item.interface.ts';
+import { type PopoverItem } from './popover-item.interface';
 
 export interface PopoverStoreProps {
     popoverElement?: HTMLElement;

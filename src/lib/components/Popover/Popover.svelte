@@ -2,9 +2,9 @@
     import { createEventDispatcher, onMount } from 'svelte';
     import { type Instance } from '@popperjs/core';
     import { createPopoverStore } from './PopoverStore.js';
-    import { PopoverPositionEnum, type PopoverItem, type PopoverPosition } from './types/index.ts';
+    import { PopoverPositionEnum, type PopoverItem, type PopoverPosition } from './types/index';
     import { PopoverUtilities } from './utils';
-    import { setParentStoreContext } from '../../utilities/index.ts';
+    import { setParentStoreContext } from '../../utilities/index';
 
     // -----------------------
     // External Properties

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { type HeaderType, type HeaderColor, HeaderColorEnum, HeaderTypeEnum } from './types/index.ts';
+    import { type HeaderType, type HeaderColor, HeaderColorEnum, HeaderTypeEnum } from './types/index';
     // -----------------------
     // External Properties
     // -----------------------

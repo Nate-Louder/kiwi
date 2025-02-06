@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { type TextColor, TextColorEnum, type TextSize, TextSizeEnum } from './types/index.ts';
+    import { type TextColor, TextColorEnum, type TextSize, TextSizeEnum } from './types/index';
     // -----------------------
     // External Properties
     // -----------------------

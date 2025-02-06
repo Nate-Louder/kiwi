@@ -6,5 +6,5 @@ export { default as PopoverChipTrigger } from './CustomPopoverTrigger/PopoverChi
 export { default as PopoverMultiSelectContent } from './CustomPopoverContent/PopoverMultiSelectContent.svelte';
 export { default as PopoverSingleSelectContent } from './CustomPopoverContent/PopoverSingleSelectContent.svelte';
 
-export * from './types/index.ts';
-export * from './utils/index.ts';
+export * from './types/index';
+export * from './utils/index';

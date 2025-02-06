@@ -1,1 +1,1 @@
-export * from './accordion-store.interface.ts';
+export * from './accordion-store.interface';
