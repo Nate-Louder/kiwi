@@ -176,6 +176,7 @@
             gap: 8px;
             user-select: none;
             color: var(--label-color);
+            white-space: nowrap;
         }
 
         &__chevron {

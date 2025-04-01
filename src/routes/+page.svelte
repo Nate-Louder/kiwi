@@ -150,10 +150,10 @@
         <Popover on:popoverItemsChanged={handlePopoverItemsChanged} items={exampleItems}>
             <PopoverChipTrigger
                 slot="trigger"
-                label="Single"
+                label="Single wingle dingle"
                 style={{
                     borderRadius: 0,
-                    backgroundColor: '#000000',
+                    backgroundColor: 'red',
                     color: '#FFFFFF',
                     hover: {
                         backgroundColor: '#212121',
