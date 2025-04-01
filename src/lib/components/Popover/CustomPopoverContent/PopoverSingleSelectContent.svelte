@@ -6,6 +6,11 @@
     import { createEventDispatcher } from 'svelte';
 
     // -----------------------
+    // External Properties
+    // -----------------------
+    export let style: PopoverContentCustomStyling;
+
+    // -----------------------
     // Internal Properties
     // -----------------------
     const popoverStore: CustomPopoverStore = getParentStore() as CustomPopoverStore;
@@ -39,7 +44,7 @@
     $: selectedItems = $popoverStore.selectedItems ?? [];
 </script>
 
-<PopoverContent>
+<PopoverContent {style}>
     <div slot="custom-content" class="single-select-content">
         {#each items as item}
             <!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -49,7 +54,7 @@
                 class:single-select-content__item--selected={isItemSelected(item)}
                 on:click={() => handleItemClicked(item)}
             >
-                <Text color={isItemSelected(item) ? TextColorEnum.secondary : TextColorEnum.primary}>{item.label}</Text>
+                <span>{item.label}</span>
             </div>
         {/each}
     </div>
@@ -61,23 +66,27 @@
         flex-direction: column;
         width: 200px;
         gap: var(--size-xs);
+        background-color: var(--background-color);
 
         &__item {
             width: auto;
             padding: var(--size-xs) var(--size-md) var(--size-xs) var(--size-md);
             cursor: pointer;
-            border-radius: var(--size-sm);
+            border-radius: var(--item-border-radius);
             transition: all 0.2s ease;
+            color: var(--item-color);
 
             &:hover {
-                background-color: var(--color-primary-light);
+                background-color: var(--item-hover-background-color);
+                color: var(--item-hover-color);
             }
 
             &--selected {
-                background-color: var(--color-primary-light);
+                background-color: var(--item-selected-background-color);
+                color: var(--item-selected-color);
 
                 &:hover {
-                    background-color: var(--color-primary);
+                    background-color: var(--item-hover-background-color);
                 }
             }
         }
@@ -93,7 +102,8 @@
             justify-content: center;
 
             &--selected {
-                background-color: #f5a623;
+                background-color: var(--item-selected-background-color);
+                color: var(--item-selected-color);
             }
         }
     }

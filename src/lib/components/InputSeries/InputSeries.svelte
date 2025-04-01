@@ -14,10 +14,14 @@
     export let style: InputSeriesCustomStyling | undefined = undefined;
 
     // -----------------------
+    // Internal Events
+    // -----------------------
+    const dispatch = createEventDispatcher();
+
+    // -----------------------
     // Internal Properties
     // -----------------------
     let inputElements: HTMLInputElement[] = [];
-    const dispatch = createEventDispatcher();
 
     const defaultStyles: InputSeriesCustomStyling = {
         backgroundColor: '#FFFFFF',
@@ -114,7 +118,6 @@
 
     function handleInput(event: Event, index: number): void {
         let targetValue = (event.target as HTMLInputElement).value;
-        dispatch('change', { value: targetValue });
 
         if (type === InputSeriesTypeEnum.digit) {
             if (!/^\d+$/.test(targetValue)) {

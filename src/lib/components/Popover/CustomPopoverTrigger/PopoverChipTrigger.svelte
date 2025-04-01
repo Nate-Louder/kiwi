@@ -5,19 +5,21 @@
     import type { CustomPopoverStore, PopoverItem } from '../types/index';
     import { getParentStore } from '../../../utilities/index';
     import { TextColorEnum, TextSizeEnum } from '../../Text/types/index';
+    import { type PopoverChipTriggerCustomStyling } from './types/index';
 
     // -----------------------
     // External Properties
     // -----------------------
     export let label: string = '';
     export let requireselection: boolean = false;
+    export let style: Record<string, string | number> | undefined = undefined; // External custom style prop
 
     // -----------------------
     // Internal Properties
     // -----------------------
     const popoverStore: CustomPopoverStore = getParentStore() as CustomPopoverStore;
     let rotateDegrees: number = 0;
-    let selectedItems: PopoverItem[];
+    let selectedItems: PopoverItem[] = [];
     let isClearButtonHovered: boolean = false;
 
     // -----------------------
@@ -35,22 +37,77 @@
     // -----------------------
     $: selectedItems = $popoverStore.selectedItems ?? [];
     $: rotateDegrees = $popoverStore.open ? 0 : 180;
+
+    // -----------------------
+    // Default Styles
+    // -----------------------
+    const defaultStyles: PopoverChipTriggerCustomStyling = {
+        backgroundColor: '#FFFFFF',
+        color: '#000000',
+        padding: '8px 10px',
+        borderRadius: '12px',
+        border: '1px solid #CCC',
+        labelColor: '#000000',
+        chevronColor: '#787878',
+        clearButtonColor: '#000000',
+        hoverBackground: '#f0f0f0',
+        hoverBorder: '#d0d0d0',
+        selectedColor: '#FFFFFF',
+        chevronColor: '#FFFFFF',
+    };
+
+    // -----------------------
+    // Merging Styles Function
+    // -----------------------
+    const buildStyles = () => {
+        const mergedStyles = {
+            ...defaultStyles,
+            ...style,
+        };
+
+        return `
+            --background-color: ${mergedStyles.backgroundColor};
+            --color: ${mergedStyles.color};
+            --border: ${mergedStyles.border};
+            --border-radius: ${mergedStyles.borderRadius};
+            --padding: ${mergedStyles.padding};
+            --font-size: ${mergedStyles.fontSize};
+            --width: ${mergedStyles.width};
+            --height: ${mergedStyles.height};
+
+            --hover-border: ${mergedStyles.hover?.border ?? 'inherit'};
+            --hover-background: ${mergedStyles.hover?.backgroundColor ?? 'inherit'};
+            --hover-color: ${mergedStyles.hover?.color ?? 'inherit'};
+
+            --focus-border: ${mergedStyles.focus?.border ?? 'inherit'};
+            --focus-background: ${mergedStyles.focus?.backgroundColor ?? 'inherit'};
+            --focus-color: ${mergedStyles.focus?.color ?? 'inherit'};
+
+            --disabled-background: ${mergedStyles.disabled?.backgroundColor ?? 'inherit'};
+            --disabled-color: ${mergedStyles.disabled?.color ?? 'inherit'};
+            --disabled-border: ${mergedStyles.disabled?.border ?? 'inherit'};
+            --disabled-cursor: ${mergedStyles.disabled?.cursor ?? 'not-allowed'};
+
+            --selected-color: ${mergedStyles.selectedColor};
+            --chevron-color: ${mergedStyles.chevronColor};
+        `;
+    };
 </script>
 
 <PopoverTrigger>
-    <div slot="custom-trigger" class="popover-chip-trigger" class:popover-chip-trigger--no-hover-effect={isClearButtonHovered}>
+    <div slot="custom-trigger" class="popover-chip-trigger" style={buildStyles()}>
         <div class="popover-chip-trigger__label">
             {#if selectedItems.length > 0}
-                <Text color={TextColorEnum.secondary}>
+                <span class="popover-chip-trigger__selected-label">
                     {selectedItems[0].label}
-                </Text>
+                </span>
                 {#if selectedItems.length > 1}
-                    <Text color={TextColorEnum.secondary} size={TextSizeEnum.small}>
+                    <span class="popover-chip-trigger__selected-label">
                         +{selectedItems.length - 1}
-                    </Text>
+                    </span>
                 {/if}
             {:else}
-                <Text>{label}</Text>
+                <span class="popover-chip-trigger__label">{label}</span>
             {/if}
         </div>
         {#if selectedItems.length === 0 || requireselection}
@@ -74,7 +131,6 @@
             <!-- svelte-ignore a11y-click-events-have-key-events -->
             <div
                 class="popover-chip-trigger__clear-button"
-                class:popover-chip-trigger__clear-button--hovered={isClearButtonHovered}
                 on:click={handleClearButtonClick}
                 on:mouseenter={() => (isClearButtonHovered = true)}
                 on:mouseleave={() => (isClearButtonHovered = false)}
@@ -94,18 +150,18 @@
     .popover-chip-trigger {
         display: flex;
         min-width: 100px;
-        padding: var(--size-xs) 10px;
+        padding: var(--padding);
         justify-content: space-between;
         align-items: center;
-        border-radius: 12px;
-        outline: 1px solid var(--color-edge-dark);
-        background-color: transparent;
+        border-radius: var(--border-radius);
+        outline: var(--border);
+        background-color: var(--background-color);
         transition: all 0.3s ease;
         gap: var(--size-sm);
 
         &:hover {
-            background-color: var(--color-interactable-secondary-hover);
-            outline: 1px solid var(--color-interactable-outline-hover);
+            background-color: var(--hover-background);
+            outline: var(--hover-border);
         }
 
         &--no-hover-effect {
@@ -119,13 +175,14 @@
             align-items: center;
             gap: 8px;
             user-select: none;
+            color: var(--label-color);
         }
 
         &__chevron {
             height: 14px;
             width: 14px;
             transition: transform 0.3s ease;
-            color: #787878;
+            color: var(--chevron-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -136,7 +193,7 @@
             height: 8px;
             width: 8px;
             cursor: pointer;
-            color: var(--color-primary-dark);
+            color: var(--chevron-color);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -145,9 +202,16 @@
             z-index: 15;
 
             &--hovered {
-                background-color: var(--color-interactable-secondary-hover);
-                cursor: pointer;
+                background-color: var(--hover-background);
             }
+        }
+
+        &__selected-label {
+            color: var(--selected-color);
+        }
+
+        &__label {
+            color: var(--color);
         }
     }
 </style>

@@ -43,7 +43,6 @@
     ];
 
     let popoverItems: PopoverItem[] = [];
-    // let toast;
 
     function handlePopoverItemsChanged(event: CustomEvent): void {
         popoverItems = event.detail.selectedItems;
@@ -60,6 +59,7 @@
         console.log(event.detail.value);
     }
     let flyoutElement: any;
+    let inputSeriesValue: number[] = [1, 2, 3];
 </script>
 
 <div class="components">
@@ -147,9 +147,39 @@
             <PopoverChipTrigger slot="trigger" label="Multi" requireselection />
             <PopoverMultiSelectContent slot="content" />
         </Popover>
-        <Popover on:popoverItemsChanged={handlePopoverItemsChanged} items={exampleItems} hover={true}>
-            <PopoverChipTrigger slot="trigger" label="Single" />
-            <PopoverSingleSelectContent slot="content" />
+        <Popover on:popoverItemsChanged={handlePopoverItemsChanged} items={exampleItems}>
+            <PopoverChipTrigger
+                slot="trigger"
+                label="Single"
+                style={{
+                    borderRadius: 0,
+                    backgroundColor: '#000000',
+                    color: '#FFFFFF',
+                    hover: {
+                        backgroundColor: '#212121',
+                        color: '#FFFFFF',
+                    },
+                    chevronColor: '#FFFFFF',
+                }}
+            />
+            <PopoverSingleSelectContent
+                slot="content"
+                style={{
+                    borderRadius: 0,
+                    backgroundColor: '#000000',
+                    color: '#FFFFFF',
+                    itemColor: '#FFFFFF',
+                    hover: {
+                        backgroundColor: '#212121',
+                        color: '#FFFFFF',
+                    },
+                    selected: {
+                        itemBackgroundColor: '#FFFFFF',
+                        itemColor: '#000000',
+                    },
+                    chevronColor: '#FFFFFF',
+                }}
+            />
         </Popover>
         <Popover>
             <PopoverTrigger slot="trigger" fullheight fullwidth>
@@ -205,7 +235,7 @@
     </div>
     <Text>This is the text component</Text>
     <TextInput label="Custom Input" />
-    <InputSeries label="This is an Input Series" on:change={handleChange} />
+    <InputSeries label="This is an Input Series" on:change={(e) => console.log(e.detail)} />
 </div>
 
 <style>
