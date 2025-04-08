@@ -11,6 +11,8 @@
     export let error: string = '';
     export let disabled: boolean = false;
     export let style: TextInputCustomStyling | undefined = undefined;
+    export let type: string = 'text';
+    export let pattern: string = '';
 
     // -----------------------
     // Internal Events
@@ -129,7 +131,8 @@
         class="input"
         class:input--error={error}
         class:input--disabled={disabled}
-        type="text"
+        type={type}
+        pattern={pattern}
         {value}
         {placeholder}
         {disabled}
